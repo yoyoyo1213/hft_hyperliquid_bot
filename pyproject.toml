@@ -1,0 +1,28 @@
+[tool.ruff]
+line-length = 120
+indent-width = 4
+# Enable common rule sets: pyflakes (F), pycodestyle (E/W), isort (I), pydocstyle (D) optional
+select = ["F", "E", "W", "I"]
+ignore = [
+  # Allow unused imports in __init__.py for package exports
+  "F401",
+]
+exclude = [
+  "__pycache__",
+  ".venv",
+  "build",
+  "dist",
+  "logs",
+]
+
+[tool.ruff.isort]
+combine-as-imports = true
+known-first-party = ["hft_hyperliquid_bot"]
+
+[tool.coverage.run]
+branch = true
+source = ["hft_hyperliquid_bot"]
+
+[tool.coverage.report]
+show_missing = true
+skip_empty = true

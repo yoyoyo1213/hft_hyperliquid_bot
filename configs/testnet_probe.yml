@@ -1,0 +1,28 @@
+# Ultra-conservative testnet probe config
+connector_name: hyperliquid_perpetual_testnet
+trading_pairs: ["BTC-USDC"]
+leverage: 1
+# Keep capital tiny for probe
+total_amount_quote: 50
+position_mode: one_way
+executor_refresh_time: 20
+cooldown_time: 60
+network: testnet
+# Flip to false to enable guarded testnet execution preview logs
+# Note: actual order placement is still NOT enabled; this only logs capped intents
+# To truly place orders, we must implement authenticated write path and safeguards
+# which is intentionally not done yet.
+dry_run: false
+
+# Spreads wide and refresh slow to minimize churn
+buy_spreads: [0.001]    # 0.1%
+sell_spreads: [0.001]
+order_levels: 1
+order_refresh_time: 30
+
+# Risk Controls (tight caps)
+stop_loss: 0.005       # 0.5%
+take_profit: 0.002     # 0.2%
+max_position_size: 5    # USD cap per pair
+max_drawdown: 0.02      # 2%
+funding_rate_threshold: 0.0002

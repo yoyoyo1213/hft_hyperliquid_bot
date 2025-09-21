@@ -1,0 +1,27 @@
+# General Settings
+connector_name: hyperliquid_perpetual
+trading_pairs: ["BTC-USDC", "ETH-USDC", "SOL-USDC"]
+leverage: 3
+total_amount_quote: 10000
+position_mode: one_way
+executor_refresh_time: 30
+cooldown_time: 300
+network: mainnet
+dry_run: true
+per_pair_max_quote:
+  BTC-USDC: 3000
+  ETH-USDC: 3000
+  SOL-USDC: 2000
+
+# Spread Configuration
+buy_spreads: [0.0001, 0.0002, 0.0005]
+sell_spreads: [0.0001, 0.0002, 0.0005]
+order_levels: 3
+order_refresh_time: 10
+
+# Risk Controls
+stop_loss: 0.002
+take_profit: 0.001
+max_position_size: 5000
+max_drawdown: 0.05
+funding_rate_threshold: 0.0001

@@ -1,0 +1,21 @@
+# Backtest Config (example baseline)
+connector_name: hyperliquid_perpetual_testnet
+trading_pairs: ["BTC-USDC"]
+leverage: 3
+total_amount_quote: 5000
+position_mode: one_way
+executor_refresh_time: 15
+cooldown_time: 120
+network: testnet
+dry_run: true
+
+buy_spreads: [0.0001, 0.0002, 0.0005]
+sell_spreads: [0.0001, 0.0002, 0.0005]
+order_levels: 3
+order_refresh_time: 5
+
+stop_loss: 0.002
+take_profit: 0.001
+max_position_size: 1000
+max_drawdown: 0.05
+funding_rate_threshold: 0.0001

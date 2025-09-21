@@ -1,0 +1,13 @@
+# Core runtime
+pydantic>=2.5
+pyyaml>=6.0
+httpx>=0.27
+websockets>=12.0
+numpy>=1.26
+pandas>=2.2
+loguru>=0.7
+python-dotenv>=1.0
+
+# Optional/Planned (pin after environment validation)
+# hummingbot>=2.0  # Placeholder for Hummingbot v2.x strategy framework
+# hyperliquid-connector  # Placeholder if packaged separately
