@@ -1,5 +1,8 @@
 # HFT Hyperliquid Bot (Scaffold)
 
+[![CI](https://github.com/yoyoyo1213/hft_hyperliquid_bot/actions/workflows/python-tests.yml/badge.svg)](https://github.com/yoyoyo1213/hft_hyperliquid_bot/actions/workflows/python-tests.yml)
+[![codecov](https://codecov.io/gh/yoyoyo1213/hft_hyperliquid_bot/branch/main/graph/badge.svg)](https://codecov.io/gh/yoyoyo1213/hft_hyperliquid_bot)
+
 This repository is scaffolded from the saved spec `improved_hummingbot_hft_prompt.md` to build a production-ready HFT bot targeting Hyperliquid perpetuals using a PMM Simple V2 style controller with funding-rate enhancements.
 
 ## Structure

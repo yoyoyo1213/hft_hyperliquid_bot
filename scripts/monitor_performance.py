@@ -4,6 +4,7 @@ Simple monitoring scaffold. Extend with real dashboards/alerts.
 from __future__ import annotations
 
 from time import sleep
+
 from loguru import logger
 
 

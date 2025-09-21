@@ -7,15 +7,15 @@ This is a scaffold: exchange wiring is abstracted via utils.hyperliquid_utils.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Dict, List, Optional
 from statistics import mean
-from loguru import logger
+from typing import Dict, List, Optional
 
+from loguru import logger
 from pydantic import BaseModel
 
+from ..controllers.risk_manager import RiskManager
 from ..executors.funding_rate_executor import FundingRateExecutor
 from ..executors.position_executor import PositionExecutor
-from ..controllers.risk_manager import RiskManager
 from ..utils.hyperliquid_utils import HyperliquidClient
 
 
@@ -87,7 +87,11 @@ class PMMFundingArbController:
         self._equity: float = float(self.config.total_amount_quote)
 
     def start(self) -> None:
-        logger.info("Starting PMMFundingArbController | network={} dry_run={}", self.config.network, self.config.dry_run)
+        logger.info(
+            "Starting PMMFundingArbController | network={} dry_run={}",
+            self.config.network,
+            self.config.dry_run,
+        )
         self.state.running = True
         self.funding_exec.start()
         self.position_exec.start()
@@ -171,7 +175,8 @@ class PMMFundingArbController:
                 ask_depth5 = sum([float(lvl[1]) for lvl in asks[:5]]) if asks else 0.0
                 spread = (best_ask - best_bid) if (best_bid is not None and best_ask is not None) else None
                 logger.info(
-                    "Health: {} bestBid={} bestAsk={} mid={} spread={} bidDepth5={} askDepth5={} bidLevels={} askLevels={}",
+                    "Health: {} bestBid={} bestAsk={} mid={} spread={} bidDepth5={} "
+                    "askDepth5={} bidLevels={} askLevels={}",
                     pair,
                     best_bid,
                     best_ask,

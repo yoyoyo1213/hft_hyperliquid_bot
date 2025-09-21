@@ -4,14 +4,14 @@ Deploy the strategy using the scaffold controller.
 from __future__ import annotations
 
 import argparse
+import sys
 import time
 from pathlib import Path
-import sys
 from typing import Optional
 
 import yaml
-from loguru import logger
 from dotenv import load_dotenv
+from loguru import logger
 
 try:
     # When executed as a module: python -m hft_hyperliquid_bot.scripts.deploy_strategy

@@ -3,13 +3,14 @@ Hyperliquid utility functions and connector facades (Scaffold).
 """
 from __future__ import annotations
 
-from typing import Any, Dict, Optional
-from dataclasses import dataclass
 import os
-from loguru import logger
-import httpx
 import time
 from collections import defaultdict, deque
+from dataclasses import dataclass
+from typing import Any, Dict, Optional
+
+import httpx
+from loguru import logger
 
 
 class HyperliquidClient:
@@ -126,7 +127,12 @@ class HyperliquidClient:
                     except Exception:
                         pass
                     return r.json()
-                logger.debug("HTTP POST /info non-200: {} body={} latency_ms={:.1f}", r.status_code, info_type, elapsed_ms)
+                logger.debug(
+                    "HTTP POST /info non-200: {} body={} latency_ms={:.1f}",
+                    r.status_code,
+                    info_type,
+                    elapsed_ms,
+                )
             except Exception as e:
                 logger.debug("HTTP POST /info failed (attempt {}): {} type={}", attempt + 1, e, body.get("type"))
             if attempt < retries - 1:

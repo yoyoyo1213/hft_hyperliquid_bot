@@ -1,6 +1,6 @@
 import sys
-from pathlib import Path
 import unittest
+from pathlib import Path
 from unittest.mock import patch
 
 # Ensure the repository root is on sys.path so 'hft_hyperliquid_bot' can be imported
@@ -8,7 +8,7 @@ repo_root = Path(__file__).resolve().parents[2]
 if str(repo_root) not in sys.path:
     sys.path.insert(0, str(repo_root))
 
-from hft_hyperliquid_bot.utils.hyperliquid_utils import HyperliquidClient
+from hft_hyperliquid_bot.utils.hyperliquid_utils import HyperliquidClient  # noqa: E402
 
 
 class TestHyperliquidUtils(unittest.TestCase):

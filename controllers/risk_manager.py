@@ -3,9 +3,10 @@ Risk management utilities for HFT strategy (Scaffold).
 """
 from __future__ import annotations
 
-from typing import Dict, List, Optional
-from loguru import logger
 import time
+from typing import Dict, List, Optional
+
+from loguru import logger
 
 
 class RiskManager:
@@ -64,7 +65,12 @@ class RiskManager:
                     audit[pair] = {"used": used, "cap": cap, "remaining": 0.0}
                     continue
                 if size > remaining:
-                    logger.warning("Per-pair cap would be exceeded for {}. Capping size {} -> {}.", pair, size, remaining)
+                    logger.warning(
+                        "Per-pair cap would be exceeded for {}. Capping size {} -> {}.",
+                        pair,
+                        size,
+                        remaining,
+                    )
                     size = remaining
                     capped_count += 1
                 used_by_pair[pair] = used + size

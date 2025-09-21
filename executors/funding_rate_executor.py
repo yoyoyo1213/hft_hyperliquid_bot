@@ -4,7 +4,9 @@ Funding rate monitoring and signal generation (Scaffold).
 from __future__ import annotations
 
 from typing import Dict, List
+
 from loguru import logger
+
 from ..utils.hyperliquid_utils import HyperliquidClient
 
 

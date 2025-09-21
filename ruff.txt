@@ -1,0 +1,226 @@
+I001 [*] Import block is un-sorted or un-formatted
+  --> controllers\pmm_funding_arb_controller.py:7:1
+   |
+ 5 |   This is a scaffold: exchange wiring is abstracted via utils.hyperliquid_utils.
+ 6 |   """
+ 7 | / from __future__ import annotations
+ 8 | |
+ 9 | | from dataclasses import dataclass
+10 | | from typing import Dict, List, Optional
+11 | | from statistics import mean
+12 | | from loguru import logger
+13 | |
+14 | | from pydantic import BaseModel
+15 | |
+16 | | from ..executors.funding_rate_executor import FundingRateExecutor
+17 | | from ..executors.position_executor import PositionExecutor
+18 | | from ..controllers.risk_manager import RiskManager
+19 | | from ..utils.hyperliquid_utils import HyperliquidClient
+   | |_______________________________________________________^
+   |
+help: Organize imports
+
+E501 Line too long (121 > 120)
+  --> controllers\pmm_funding_arb_controller.py:90:121
+   |
+89 |     def start(self) -> None:
+90 |         logger.info("Starting PMMFundingArbController | network={} dry_run={}", self.config.network, self.config.dry_run)
+   |                                                                                                                         ^
+91 |         self.state.running = True
+92 |         self.funding_exec.start()
+   |
+
+E501 Line too long (124 > 120)
+   --> controllers\pmm_funding_arb_controller.py:174:121
+    |
+172 |                 spread = (best_ask - best_bid) if (best_bid is not None and best_ask is not None) else None
+173 |                 logger.info(
+174 |                     "Health: {} bestBid={} bestAsk={} mid={} spread={} bidDepth5={} askDepth5={} bidLevels={} askLevels={}",
+    |                                                                                                                         ^^^^
+175 |                     pair,
+176 |                     best_bid,
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> controllers\risk_manager.py:4:1
+  |
+2 |   Risk management utilities for HFT strategy (Scaffold).
+3 |   """
+4 | / from __future__ import annotations
+5 | |
+6 | | from typing import Dict, List, Optional
+7 | | from loguru import logger
+8 | | import time
+  | |___________^
+  |
+help: Organize imports
+
+E501 Line too long (122 > 120)
+  --> controllers\risk_manager.py:67:121
+   |
+65 |                     continue
+66 |                 if size > remaining:
+67 |                     logger.warning("Per-pair cap would be exceeded for {}. Capping size {} -> {}.", pair, size, remaining)
+   |                                                                                                                         ^^
+68 |                     size = remaining
+69 |                     capped_count += 1
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> executors\funding_rate_executor.py:4:1
+  |
+2 |   Funding rate monitoring and signal generation (Scaffold).
+3 |   """
+4 | / from __future__ import annotations
+5 | |
+6 | | from typing import Dict, List
+7 | | from loguru import logger
+8 | | from ..utils.hyperliquid_utils import HyperliquidClient
+  | |_______________________________________________________^
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> executors\position_executor.py:4:1
+  |
+2 |   Position executor coordinates order placement/cancellation (Scaffold).
+3 |   """
+4 | / from __future__ import annotations
+5 | |
+6 | | from typing import Dict, List
+7 | | from loguru import logger
+  | |_________________________^
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> scripts\deploy_strategy.py:4:1
+   |
+ 2 |   Deploy the strategy using the scaffold controller.
+ 3 |   """
+ 4 | / from __future__ import annotations
+ 5 | |
+ 6 | | import argparse
+ 7 | | import time
+ 8 | | from pathlib import Path
+ 9 | | import sys
+10 | | from typing import Optional
+11 | |
+12 | | import yaml
+13 | | from loguru import logger
+14 | | from dotenv import load_dotenv
+   | |______________________________^
+15 |
+16 |   try:
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> scripts\monitor_performance.py:4:1
+  |
+2 |   Simple monitoring scaffold. Extend with real dashboards/alerts.
+3 |   """
+4 | / from __future__ import annotations
+5 | |
+6 | | from time import sleep
+7 | | from loguru import logger
+  | |_________________________^
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests\test_hyperliquid_utils.py:1:1
+  |
+1 | / import sys
+2 | | from pathlib import Path
+3 | | import unittest
+4 | | from unittest.mock import patch
+  | |_______________________________^
+5 |
+6 |   # Ensure the repository root is on sys.path so 'hft_hyperliquid_bot' can be imported
+  |
+help: Organize imports
+
+E402 Module level import not at top of file
+  --> tests\test_hyperliquid_utils.py:11:1
+   |
+ 9 |     sys.path.insert(0, str(repo_root))
+10 |
+11 | from hft_hyperliquid_bot.utils.hyperliquid_utils import HyperliquidClient
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests\test_position_executor.py:1:1
+  |
+1 | / import sys
+2 | | from pathlib import Path
+3 | | import unittest
+  | |_______________^
+4 |
+5 |   # Ensure the repository root is on sys.path so 'hft_hyperliquid_bot' can be imported
+  |
+help: Organize imports
+
+E402 Module level import not at top of file
+  --> tests\test_position_executor.py:10:1
+   |
+ 8 |     sys.path.insert(0, str(repo_root))
+ 9 |
+10 | from hft_hyperliquid_bot.executors.position_executor import PositionExecutor
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests\test_risk_manager.py:1:1
+  |
+1 | / import sys
+2 | | from pathlib import Path
+3 | | import time
+4 | | import unittest
+  | |_______________^
+5 |
+6 |   # Ensure the repository root is on sys.path so 'hft_hyperliquid_bot' can be imported
+  |
+help: Organize imports
+
+E402 Module level import not at top of file
+  --> tests\test_risk_manager.py:11:1
+   |
+ 9 |     sys.path.insert(0, str(repo_root))
+10 |
+11 | from hft_hyperliquid_bot.controllers.risk_manager import RiskManager
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> utils\hyperliquid_utils.py:4:1
+   |
+ 2 |   Hyperliquid utility functions and connector facades (Scaffold).
+ 3 |   """
+ 4 | / from __future__ import annotations
+ 5 | |
+ 6 | | from typing import Any, Dict, Optional
+ 7 | | from dataclasses import dataclass
+ 8 | | import os
+ 9 | | from loguru import logger
+10 | | import httpx
+11 | | import time
+12 | | from collections import defaultdict, deque
+   | |__________________________________________^
+   |
+help: Organize imports
+
+E501 Line too long (123 > 120)
+   --> utils\hyperliquid_utils.py:129:121
+    |
+127 |                         pass
+128 |                     return r.json()
+129 |                 logger.debug("HTTP POST /info non-200: {} body={} latency_ms={:.1f}", r.status_code, info_type, elapsed_ms)
+    |                                                                                                                         ^^^
+130 |             except Exception as e:
+131 |                 logger.debug("HTTP POST /info failed (attempt {}): {} type={}", attempt + 1, e, body.get("type"))
+    |
+
+Found 17 errors.
+[*] 10 fixable with the `--fix` option.
